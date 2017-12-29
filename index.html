@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Allocation Dashboard</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/global.css" rel="stylesheet">
+    <script src="js/glyphs.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-white navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="pull-left">
+                <span class="panel-heading">Markets:</span>
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-info active">
+                        <input type="checkbox" autocomplete="off" checked> JPN
+                    </label>
+                    <label class="btn btn-info">
+                        <input type="checkbox" autocomplete="off"> US
+                    </label>
+                    <label class="btn btn-info">
+                        <input type="checkbox" autocomplete="off"> CAN
+                    </label>
+                </div>
+            </div>
+            <div class="pull-left margin">
+                <span class="panel-heading">Brands: </span>
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-info active">
+                        <input type="checkbox" autocomplete="off" checked> GO
+                    </label>
+                </div>
+            </div>
+            <div class="pull-right">
+                <button type="button" class="btn btn-info auto margin-top">
+                    <span class="glyphicon glyphicon-refresh"></span>
+                </button>
+
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <div class="col-sm-12 col-lg-12 main">
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-3">
+                <div class="panel panel-blue panel-widget ">
+                    <div class="row no-padding">
+                        <div class="col-sm-3 col-lg-5 widget-left">
+                            <svg class="glyph stroked tag">
+                                <use xlink:href="#stroked-tag"></use>
+                            </svg>
+                        </div>
+                        <div class="col-sm-9 col-lg-7 widget-right">
+                            <div class="large text-right">3,897</div>
+                            <div class="text-muted pull-right">in catalog</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-3">
+                <div class="panel panel-orange panel-widget">
+                    <div class="row no-padding">
+                        <div class="col-sm-3 col-lg-5 widget-left">
+                            <svg class="glyph stroked bag">
+                                <use xlink:href="#stroked-bag"></use>
+                            </svg>
+                        </div>
+                        <div class="col-sm-9 col-lg-7 widget-right">
+                            <div class="large text-right">3,897</div>
+                            <div class="text-muted pull-right">with target inventory</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-3">
+                <div class="panel panel-teal panel-widget">
+                    <div class="row no-padding">
+                        <div class="col-sm-3 col-lg-5 widget-left">
+                            <svg class="glyph stroked calendar">
+                                <use xlink:href="#stroked-calendar"></use>
+                            </svg>
+                        </div>
+                        <div class="col-sm-9 col-lg-7 widget-right">
+                            <div class="large text-right">3,897</div>
+                            <div class="text-muted pull-right">with ap</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-3">
+                <div class="panel panel-light-red panel-widget">
+                    <div class="row no-padding">
+                        <div class="col-sm-3 col-lg-5 widget-left">
+                            <svg class="glyph stroked app-window-with-content">
+                                <use xlink:href="#stroked-app-window-with-content"></use>
+                            </svg>
+                        </div>
+                        <div class="col-sm-9 col-lg-7 widget-right">
+                            <div class="large text-right">3,987</div>
+                            <div class="text-muted pull-right">found in GBP</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">CCs by in store date
+                    </div>
+                    <div class="panel-body">
+                        <div class="canvas-wrapper">
+                            <canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Reports
+                            </div>
+                            <div class="panel-body">
+                                <ul class="download-list">
+                                    <li class="download-list-item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">CCs without TI</label>
+                                        </div>
+                                    </li>
+                                    <li class="download-list-item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">CCs without AP</label>
+                                        </div>
+                                    </li>
+                                    <li class="download-list-item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">Missing CCs from GBP</label>
+                                        </div>
+                                    </li>
+                                    <li class="download-list-item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="checkbox">
+                                            <label for="checkbox">CCs by ISD/Division</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+								<button class="btn btn-primary btn-md" id="btn-download">Download</button>
+							</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12 col-lg-12">
+                                <div class="panel panel-grey panel-widget">
+                                    <div class="row no-padding">
+                                        <div class="col-sm-3 col-lg-5 widget-left">
+                                            <svg class="glyph stroked checkmark">
+                                                <use xlink:href="#stroked-checkmark"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="col-sm-9 col-lg-7 widget-right">
+                                            <div class="large text-right">3,897</div>
+                                            <div class="text-muted pull-right">released</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12 col-lg-12">
+                                <div class="panel panel-grey panel-widget">
+                                    <div class="row no-padding">
+                                        <div class="col-sm-3 col-lg-5 widget-left">
+                                            <svg class="glyph stroked download">
+                                                <use xlink:href="#stroked-download"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="col-sm-9 col-lg-7 widget-right">
+                                            <div class="large text-right">3,897</div>
+                                            <div class="text-muted pull-right">in replen</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12 col-lg-12">
+                                <div class="panel panel-grey panel-widget">
+                                    <div class="row no-padding">
+                                        <div class="col-sm-3 col-lg-5 widget-left">
+                                            <svg class="glyph stroked calendar">
+                                                <use xlink:href="#stroked-calendar"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="col-sm-9 col-lg-7 widget-right">
+                                            <div class="large text-right">3,897</div>
+                                            <div class="text-muted pull-right">still new flow</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Applications
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Deployed</th>
+                                <th>Artifact</th>
+                                <th>Health</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <a>allocation-catalog-service</a>
+                                </td>
+                                <td>2016-12-23</td>
+                                <td>release-b123</td>
+                                <td class="text-center">
+                                    <div class="alert alert-success small status" role="alert">UP</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a>target-inventory-service</a>
+                                </td>
+                                <td>2016-12-23</td>
+                                <td>release-b123</td>
+                                <td class="text-center">
+                                    <div class="alert alert-danger small status" role="alert">DOWN</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a>allocation-web</a>
+                                </td>
+                                <td>2016-12-23</td>
+                                <td>release-b123</td>
+                                <td class="text-center">
+                                    <div class="alert alert-success small status" role="alert">UP</div>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">CC Management
+                            </div>
+                            <div class="panel-body">
+                                <form class="form text-center">
+                                    <div class="form-group text-left">
+                                        <label for="exampleInputName2">CC Numbers</label>
+                                        <input type="text" class="form-control" id="exampleInputName2"
+                                               placeholder="ex: 236897124, 236897126">
+                                    </div>
+                                    <button type="submit" class="btn btn-default">Get</button>
+                                    <button type="submit" class="btn btn-default">Import</button>
+                                    <button type="submit" class="btn btn-default">Recalculate TI</button>
+                                    <button type="submit" class="btn btn-default">Recalculate AP</button>
+                                    <button type="submit" class="btn btn-default">Check</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/chart.min.js"></script>
+<script src="js/chart-data.js"></script>
+</body>
+
+</html>
